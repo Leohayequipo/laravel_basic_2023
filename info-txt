@@ -1,2 +1,16 @@
 //laravel new proyecto
-sdfsd
+
+/*Necesitas tener instalado*/
+php
+laravel
+composer
+node
+bd
+
+/*arrancar el server*/
+composer install
+php artisan serve
+
+/*no puede faltar el .env*/
+//despues key generate
+
