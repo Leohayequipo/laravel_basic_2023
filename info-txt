@@ -1,5 +1,7 @@
 //laravel new proyecto
 
+
+/*Artisan es propio de laravel y nos permite a traves de comando, crear cosas (archivos bases)*/
 /*Necesitas tener instalado*/
 php
 laravel
@@ -13,4 +15,16 @@ php artisan serve
 
 /*no puede faltar el .env*/
 //despues key generate
+
+
+//con artisan creo componentes 
+ej:
+php artisan make:controller --help
+php artisan make:controller --help
+
+
+/*primero las rutas*/
+
+En las rutas creo los array que voy a mandar en un vista
+En la vista recibo los datos y los muestro -usa blade-
 
