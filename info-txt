@@ -28,3 +28,37 @@ php artisan make:controller --help
 En las rutas creo los array que voy a mandar en un vista
 En la vista recibo los datos y los muestro -usa blade-
 
+/*crear template en la vista para reutilizar codigo*/
+html
+y directiva @yield('content')
+
+Bien que esta pasando aca!
+en el archivo template uso el @yield('contenido')
+para indicar que ahi se puede colocar algo desde otro lado
+// y desde los archivos que invocan template
+
+si queremos meter algo en el @yield('content'). Le decimos 
+ usa       @extends('template')
+ 
+ y em content mete esto
+    @section('content')
+    <h1>Home</h1>
+    @endsection
+
+//bien ahora si harcodeamos la url
+
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/blog/
+http://127.0.0.1:8000/blog/psdasda
+
+//ahora en necesario agregar un nombre a las rutas
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+agregue el name
+
+/*pasar info con el nombre*/
+en el archivo blog
+ruta mas parametro
+  <a href="{{route('post'.$post['slug'])}}">
+  de esta manera armo la url
