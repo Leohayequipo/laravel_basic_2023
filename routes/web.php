@@ -1,20 +1,11 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Route;
 
-
-//Route::get('/', [PageController::class,'home'])->name('home');
-//Asi accedemos a el metodo home que esta en page controller
-
-
-//Route::get('blog',[PageController::class,'blog'])->name('blog');
-//Asi accedemos a el metodo  blog que esta en page controller
-
-//Route::get('blog/{slug}',[PageController::class,'post'])->name('post');
-//Asi accedemos a el metodo  post que esta en page controller
-
-//creo un grupo
 Route::controller(PageController::class)->group(function (){
     //eliminamos el acceso al controlador y solo nos quedamos con la ruta y el metodo
     
@@ -26,3 +17,20 @@ Route::controller(PageController::class)->group(function (){
 
 });
 
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::resource('posts',PostController::Class)->except(['show']);
+
+require __DIR__.'/auth.php';

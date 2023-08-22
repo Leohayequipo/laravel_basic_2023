@@ -158,7 +158,38 @@ en la vista queda asi
 //////inicio de session brezz
 
 instalar 
+antes de instalar compiar contenido de ruta web /***IMPORTANTE**/
 composer require laravel/breeze --dev
                                 //--dev porque se usa solo en el area de desarrollo
-                                
 
+php artisan breeze:install
+
+/* en laravel 9 no */
+
+
+
+En ruta template agrego la auth que me dio breeze
+ @auth
+ @else
+ @endauth
+
+
+//creo la ruta PostController
+Route::resource('posts',PostController::Class)->except(['show']);
+y por defecto tiene
+create update
+destry
+edit
+
+cada ruta tiene su funcion get put delet
+//para saber las rutas
+
+php artisan route:cache
+php artisan route:list
+php artisan serve
+
+vamos a PostController y creamos el metodo Index
+ despues la vista posts.index
+
+1 ruta
+2 controlador
