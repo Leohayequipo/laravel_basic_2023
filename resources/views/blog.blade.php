@@ -5,11 +5,13 @@
     @foreach($posts as $post)
     <p>
         <strong>
-            {{ $post['id'] }}
-            <a href="{{  route('post',$post['slug'])}}">
-                {{$post['title']}}
+            <!-- cambie de array $post['id']   a objeto propiedad $post->id}-->
+            {{ $post->id }}
+            <a href="{{  route('post',$post->slug)}}">
+                {{$post->title}}
             </a>
         </strong>
     </p>
     @endforeach
+    {{ $posts->links() }}
 @endsection

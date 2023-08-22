@@ -62,3 +62,82 @@ en el archivo blog
 ruta mas parametro
   <a href="{{route('post'.$post['slug'])}}">
   de esta manera armo la url
+
+/**como crear un controlador por consola**/
+php artisan make:controller PageController
+
+
+//dentro del controlador podemos ver el namespace 
+namespace App\Http\Controllers;
+para trabajar con las rutas es necesario usar ese namespace en las rutas
+quedando asi. Fijate que pusimos en nombre del controlador 
+/******/
+use App\Http\Controllers\PageController;
+/*******/
+Sacamos la logica de la ruta y la metemos en el controlador PageController
+el manejo de peticiones se hace desde un controlador
+
+
+//bases de datos
+    control de versiones de bases de datos
+    Se maneja desde migracion no desde la base de datos
+
+    php artisan migrate
+
+    //para crear una tabla
+    php artisan make:migration  create_posts_table
+
+    Em esa tabla creada agrego la sintaxis para darle forma a los campos
+
+    up crea version
+    down baja version
+//crando el modelo
+    //creo el modelo, factory y elphp artisan make:model Post -fc controlador
+    php artisan make:model Post -fc    
+    despues en la carpeta database-factories
+    creo los fakers
+      public function definition(): array
+    {
+        return [
+            'title'=>$this->faker->sentence(),
+            'slug'=>$this->faker->sentence(),
+            'body'=>$this->faker->text(2200),
+
+        ];
+    }
+
+    y en seeders activo la Semilla
+
+        public function run(): void
+    {
+         \App\Models\User::factory(10)->create();
+         \App\Models\Post::factory(80)->create();
+
+
+    php artisan migrate:refresh --seed
+
+    En el factori podemos agregar class para tener mas funcionalidades como por ejemplo
+    STR
+    en onde toma un texto y los trasforma en slug
+    use illuminate\Support\Str;
+      'title'=>$title= $this->faker->sentence(),
+            'slug'=>Str::slug($title),
+
+//eloquent (sintaxis para manejar bd) tecnologia ORM
+    Desde el controlador uso el namespace de el modelo
+
+    use \App\Models\Post;
+
+    en el controlador le figo traeme los post
+            $post = Post::get();
+
+ost::get();-> Trae todos los registros de la base de datos
+Post::frist();-> Trae el primer registro de la base de datos
+Post::find(id); -> Busca un registro en la base de datos por medio de su id
+Post::latest(); -> Trae todos los registros de la base de datos, y los ordena de forma descendente
+
+adicional, podemos utilizar el método paginate(), para realizar la paginación, solo no nos debemos de incluir en nuestras vistas la propiedad links() para que podamos visualizar los controles de paginación            
+
+            
+
+
