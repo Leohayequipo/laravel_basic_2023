@@ -138,6 +138,27 @@ Post::latest(); -> Trae todos los registros de la base de datos, y los ordena de
 
 adicional, podemos utilizar el método paginate(), para realizar la paginación, solo no nos debemos de incluir en nuestras vistas la propiedad links() para que podamos visualizar los controles de paginación            
 
-            
 
+actualizar php artisan migrate:refresh --seed
+
+//llamar a un campo de digamos un inner join
+primero en el modelo necesito indicar la relacion
+class Post extends Model
+{
+    use HasFactory;
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+}
+
+
+en la vista queda asi
+  {{$post->user->name}}
+            
+//////inicio de session brezz
+
+instalar 
+composer require laravel/breeze --dev
+                                //--dev porque se usa solo en el area de desarrollo
+                                
 

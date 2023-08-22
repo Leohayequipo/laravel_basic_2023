@@ -6,11 +6,14 @@
     <p>
         <strong>
             <!-- cambie de array $post['id']   a objeto propiedad $post->id}-->
-            {{ $post->id }}
+            {{ $post->id }}</strong>
             <a href="{{  route('post',$post->slug)}}">
                 {{$post->title}}
             </a>
-        </strong>
+            <br>
+        <span>
+            {{$post->user->name}}
+        </span>
     </p>
     @endforeach
     {{ $posts->links() }}
