@@ -6,17 +6,12 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    function home(){
-        return view('home');
+    function home(Request $request){
+        $search = $request->search;
+        $posts = Post::where('title','LIKE',"%{$search}%")->latest()->paginate();
+        return view('home',['posts'=>$posts]);
     }
-    function blog(){
-        //traeme los post (eloquent)
-        //$posts = Post::get();
-        $posts = Post::oldest()->paginate();
-        
-        return view('blog',['posts'=>$posts]);
-    
-    }
+   
     function post(Post $post){
        
         return view('post',['post'=>$post]);

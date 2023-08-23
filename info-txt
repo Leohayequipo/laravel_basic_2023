@@ -203,3 +203,11 @@ vamos a PostController y creamos el metodo Index
 editar
 guardar
 //vacio o duplicado
+
+
+//diseño
+npm run dev
+
+npm run dev y se compila el css y js con npm run build
+
+para que lo siga desde consola automatico npm run watch{{$post->body}}</p>

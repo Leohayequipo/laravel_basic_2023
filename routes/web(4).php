@@ -10,7 +10,8 @@ Route::controller(PageController::class)->group(function (){
     //eliminamos el acceso al controlador y solo nos quedamos con la ruta y el metodo
     
     Route::get('/', 'home')->name('home');
-   // Route::get('blog','blog')->name('blog');
+    Route::get('blog','blog')->name('blog');
+    
     Route::get('blog/{post:slug}','post')->name('post');
             //slug es el nombre del campo de la tabla en donde va a buscar
 
