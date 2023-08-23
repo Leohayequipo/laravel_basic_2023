@@ -193,3 +193,13 @@ vamos a PostController y creamos el metodo Index
 
 1 ruta
 2 controlador
+3 vista
+
+
+///formularios
+@csrf  para la seguridad
+
+//validacion
+editar
+guardar
+//vacio o duplicado
