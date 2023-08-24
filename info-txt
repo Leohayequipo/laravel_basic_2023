@@ -211,3 +211,6 @@ npm run dev
 npm run dev y se compila el css y js con npm run build
 
 para que lo siga desde consola automatico npm run watch{{$post->body}}</p>
+
+
+composer require barryvdh/larevel-debugbar --dev
